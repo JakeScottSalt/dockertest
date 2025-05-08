@@ -11,6 +11,9 @@ RUN apk add --no-cache git
 RUN git clone https://github.com/JakeScottSalt/dockertest.git .
 
 # Install npm dependencies
+RUN npm init -y
+
+# Install the dependencies listed in package.json
 RUN npm install
 
 # Expose the port your app is listening on (you might need to adjust this)

@@ -17,7 +17,8 @@ RUN npm init -y
 RUN npm install
 
 # Expose the port your app is listening on (you might need to adjust this)
-EXPOSE 3001
+EXPOSE 3000
 
 # Run the app using "npm run dev"
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+RUN npm run dev

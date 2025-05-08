@@ -10,6 +10,9 @@ RUN apk add --no-cache git
 # Clone the public GitHub repository
 RUN git clone https://github.com/JakeScottSalt/dockertest.git .
 
+# Set working directory to app/app
+WORKDIR /app/app
+
 # Install npm dependencies
 RUN npm init -y
 

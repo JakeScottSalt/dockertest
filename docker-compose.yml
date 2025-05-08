@@ -1,18 +1,18 @@
 version: "3.8"
 
 services:
-  secure-app:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        GITHUB_TOKEN: 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
-        REPO_URL: https://github.com/JakeScottSalt/dockertest.git
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+    ports:
+      - "3000:3000" # Change this to your app's port if necessary
     networks:
-      - secure-net
+      - app-network
+    restart: unless-stopped
 
 networks:
-  secure-net:
+  app-network:
     driver: bridge

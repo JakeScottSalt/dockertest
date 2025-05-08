@@ -1,14 +1,20 @@
-FROM alpine:latest
+# Use an official Node.js image as a base
+FROM node:16-alpine
 
-# Install git and bash
-RUN apk add --no-cache git bash openssh
-
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Clone repo securely using a token (replace variables as needed)
-ARG GITHUB_TOKEN
-ARG REPO_URL
-RUN git clone https://github.com/JakeScottSalt/dockertest.git
+# Install Git (since we're cloning the repo)
+RUN apk add --no-cache git
 
-CMD ["bash"]
+# Clone the public GitHub repository
+RUN git clone https://github.com/JakeScottSalt/dockertest.git .
+
+# Install npm dependencies
+RUN npm install
+
+# Expose the port your app is listening on (you might need to adjust this)
+EXPOSE 3000
+
+# Run the app using "npm run dev"
+CMD ["npm", "run", "dev"]

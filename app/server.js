@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 // Database connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI || "mongodb://mongo:27017")
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.log(err));
 
